@@ -1,5 +1,3 @@
-import math
-
 # Get the hours to convert
 hours = -1.0
 while hours < 0:
@@ -16,4 +14,4 @@ minutes = int(totalSecs / 60)
 secs = int(totalSecs - (minutes * 60))
 
 print("")
-print(f"{hours} hours = {minutes} minutes : {secs} seconds")
+print(hours, "hours =", minutes, "minutes :", secs,  "seconds")
