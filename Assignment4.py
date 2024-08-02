@@ -36,7 +36,7 @@ while not isValid:
 
 
 # calculate the distance
-dist = math.sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2))
+dist = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 print("")
 print("Distance between points =", dist)
