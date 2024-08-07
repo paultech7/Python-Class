@@ -2,7 +2,7 @@
 hours = -1.0
 while hours < 0:
     string1 = input("Enter hours: ")
-    if (string1.isnumeric() or string1.replace(".", "", 1).isnumeric())\
+    if (string1.replace(".", "", 1).isnumeric())\
             and float(string1) > 0:
         hours = float(string1)
     else:
