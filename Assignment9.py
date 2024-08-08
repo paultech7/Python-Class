@@ -9,7 +9,7 @@ if len(string1) == 1 and string1.isalpha():
     else:
         text = "'" + string1 + "' is a consonant."
 else:
-    text = "The entry was not a single letter. >>"
+    text = "<< The entry was not a single letter. >>"
 
 print("")
 print(text)
