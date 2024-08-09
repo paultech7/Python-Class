@@ -1,50 +1,39 @@
-# Get the marks for the 3 subjects. Verify the marks are between 0 and 100.
-mark1 = 0
-mark2 = 0
-mark3 = 0
-markIsInvalid = True
-while markIsInvalid:
-    string1 = input("Enter the mark for subject 1: ")
-    if string1.isdigit():
-        mark1 = int(string1)
-        if 0 <= mark1 <= 100:
-            markIsInvalid = False
-    if markIsInvalid:
-        print("<< Please enter a number between 0 and 100. >>")
+# Get the marks for the 3 subjects.
+string1 = input("Enter the mark for subject 1: ")
+string2 = input("Enter the mark for subject 2: ")
+string3 = input("Enter the mark for subject 3: ")
 
-markIsInvalid = True
-while markIsInvalid:
-    string1 = input("Enter the mark for subject 2: ")
-    if string1.isdigit():
-        mark2 = int(string1)
-        if 0 <= mark2 <= 100:
-            markIsInvalid = False
-    if markIsInvalid:
-        print("<< Please enter a number between 0 and 100. >>")
-markIsInvalid = True
-while markIsInvalid:
-    string1 = input("Enter the mark for subject 3: ")
-    if string1.isdigit():
-        mark3 = int(string1)
-        if 0 <= mark3 <= 100:
-            markIsInvalid = False
-    if markIsInvalid:
-        print("<< Please enter a number between 0 and 100. >>")
-
-# Calculate the average mark
-average = (mark1 + mark2 + mark3) / 3
-
-# Assign the grade based on the average
-if average >= 90:
-    grade = 'A'
-elif average >= 80:
-    grade = 'B'
-elif average >= 70:
-    grade = 'C'
-elif average >= 60:
-    grade = 'D'
+# Validate the inputs
+if string1.isdigit():
+    mark1 = int(string1)
 else:
-    grade = 'F'
+    mark1 = -1
+if string2.isdigit():
+    mark2 = int(string2)
+else:
+    mark2 = -1
+if string3.isdigit():
+    mark3 = int(string3)
+else:
+    mark3 = -1
 
-print("")
-print("The grade is", grade)
+if 0 <= mark1 <= 100 and 0 <= mark2 <= 100 and 0 <= mark3 <= 100:
+
+    # Calculate the average mark and assign the grade
+    average = (mark1 + mark2 + mark3) / 3
+    if average >= 90:
+        grade = 'A'
+    elif average >= 80:
+        grade = 'B'
+    elif average >= 70:
+        grade = 'C'
+    elif average >= 60:
+        grade = 'D'
+    else:
+        grade = 'F'
+
+    # Show the result
+    print("The grade is", grade)
+
+else:
+    print("Error: the marks must be positive integers between 0 and 100.")
