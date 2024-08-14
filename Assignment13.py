@@ -1,4 +1,4 @@
-# Get the starting integer
+# Get the string to test
 string1 = input("Enter a string: ")
 
 # Test if the string is a palindrome by looping from the beginning and end of the string and comparing characters
