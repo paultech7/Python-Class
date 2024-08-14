@@ -15,6 +15,7 @@ if string1.isdigit():
                 number = number * 3 + 1
             seq += ", " + str(number)
         else:
+            # Show the resulting sequence
             print("Collatz sequence is (" + seq + ")")
 
     else:
