@@ -1,7 +1,7 @@
 # Get the number of rows and the pattern character
 string1 = input("Enter the number of rows: ")
-patternCharIn = input("Enter the character for the pattern: ")
-patternChar = patternCharIn[0]
+patternInput = input("Enter the character for the pattern: ")
+patternChar = patternInput[0]
 
 # Validate the input
 if string1.isdigit():
@@ -10,10 +10,10 @@ if string1.isdigit():
 
         # Print a right triangle with the requested number of rows
         print("")
-        row = patternChar
-        for x in range(numberOfRows):
-            print(row)
-            row += patternChar
+        for row in range(numberOfRows):
+            for column in range(row + 1):
+                print(patternChar, end="")
+            print("")
 
     else:
         print("Error: Please enter a positive integer.")
