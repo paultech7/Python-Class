@@ -11,7 +11,7 @@ if string1.isdigit():
         # Print a right triangle with the requested number of rows
         print("")
         for row in range(numberOfRows):
-            for column in range(row + 1):
+            for column in range(row + 1):   # Add 1 to row because range starts at zero
                 print(patternChar, end="")
             print("")
 
