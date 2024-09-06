@@ -14,16 +14,21 @@ def fetch_inventory():
 
 
 # Function to add an item to an inventory.
+# All the data for an item must be given.
 # Parameters:
 #   inventory_list - list of dictionaries, inventory to update
 #   new_item       - dictionary, item to be added
 def add_item(inventory_list, new_item):
+    if len(new_item) != 4:
+        return "Add error: all the data must be entered for a new item"
+
     inventory_list.append(new_item)
+    return new_item['name'] + " added to inventory"
 
 
 # Function to update an item in an inventory.
 # The item name should match an existing item in the inventory. If it doesn't, no change will occur.
-# All the values in the existing inventory item are replaced from the passed item data.
+# The inventory will ony be updated with the item values given in the item_data parameter.
 # Parameters:
 #   inventory_list - list of dictionaries, inventory
 #   item_data      - dictionary, item data to replace the existing item in the inventory
@@ -33,7 +38,15 @@ def update_item(inventory_list, item_data):
     for item in inventory_list:
         if item['name'].lower() == item_data['name'].lower():
             item_data['name'] = item_data['name'].capitalize()
-            item.update(item_data)
+            key_list = item_data.keys()
+
+            # Update just the inventory values which are present in the passed item_data.
+            if "price" in key_list:
+                item['price'] = item_data['price']
+            if "quantity" in key_list:
+                item['quantity'] = item_data['quantity']
+            if "category" in key_list:
+                item['category'] = item_data['category']
             item_found = True
             break
     if item_found:
@@ -66,7 +79,8 @@ def remove_item(inventory_list, name_value):
 #   inventory_list - list of dictionaries, inventory
 def print_inventory(inventory_list):
     for item in inventory_list:
-        print(f"Item Name={item['name']}, Price={item['price']:.2f}, Quantity={item['quantity']}, Category={item['category']}")
+        print(
+            f"Item Name={item['name']}, Price={item['price']:.2f}, Quantity={item['quantity']}, Category={item['category']}")
 
 
 # Function to view an inventory.
@@ -96,19 +110,26 @@ def search_by_category(inventory_list, categ_value):
 # Returns: a dictionary containing the data for the item
 def get_item_data():
     new_name = input("Enter the item name: ").capitalize()
-    new_price = float(input("Enter the price: "))
-    new_qty = int(input("Enter the quantity: "))
-    new_categ = input("Enter the category: ")
-    return {'name': new_name, 'price': new_price, 'quantity': new_qty, 'category': new_categ}
+    new_price_str = input("Enter the new price: ")
+    new_qty_str = input("Enter the new quantity: ")
+    new_categ = input("Enter the new category: ")
+    item_data = {'name': new_name}
+    if len(new_price_str) > 0:
+        item_data['price'] = float(new_price_str)
+    if len(new_qty_str) > 0:
+        item_data['quantity'] = int(new_qty_str)
+    if len(new_categ) > 0:
+        item_data['category'] = new_categ
+    return item_data
 
 
 def main():
-
     # Loop to receive and process user input
     while True:
         print()
         print("Enter one of the following options:")
-        print("l=list all inventory, a=add item, u=update item, d=delete item, s=search for items in a category, q=quit")
+        print(
+            "l=list all inventory, a=add item, u=update item, d=delete item, s=search for items in a category, q=quit")
         request = input(": ")
         if request == 'q':
             break
@@ -117,7 +138,7 @@ def main():
             view_inventory(inventory)
         elif request == 'a':
             item_data = get_item_data()
-            add_item(inventory, item_data)
+            print(add_item(inventory, item_data))
         elif request == 'u':
             item_data = get_item_data()
             print(update_item(inventory, item_data))
