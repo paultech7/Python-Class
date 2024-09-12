@@ -9,7 +9,9 @@
 def fetch_inventory():
     return [
         {'name': 'Oat milk', 'price': 2.59, 'quantity': 25, 'category': 'dairy'},
-        {'name': 'Cheddar cheese', 'price': 2.08, 'quantity': 50, 'category': 'dairy'}
+        {'name': 'Cheddar cheese', 'price': 2.08, 'quantity': 50, 'category': 'dairy'},
+        {'name': 'Wheat loaf', 'price': 6.49, 'quantity': 75, 'category': 'bread'},
+        {'name': 'Rye', 'price': 5.99, 'quantity': 35, 'category': 'bread'}
     ]
 
 
